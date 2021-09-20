@@ -1,28 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.txt}>The best thing about a boolean is even if you are wrong, you are only off by a bit.</Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
-  );
+// our created screens
+import AddUserScreen from './screens/AddUserScreen';
+import UserDetailScreen from './screens/UserDetailScreen';
+import UserScreen from './screens/UserScreen';
+
+const Stack = createStackNavigator();
+function MyStack(){
+  return(
+     <Stack.Navigator
+      screenOptions={{
+          headerStyle: {
+            backgroundColor: '#621FF7',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      >
+      <Stack.Screen 
+        name="AddUserScreen" 
+        component={AddUserScreen} 
+        options={{ title: 'Add User' }}
+      />
+      <Stack.Screen 
+        name="UserScreen" 
+        component={UserScreen} 
+        options={{ title: 'Users List' }}
+      />
+      <Stack.Screen 
+       name="UserDetailScreen" 
+       component={UserDetailScreen} 
+       options={{ title: 'User Detail' }}
+      />
+    </Stack.Navigator>
+  )
 }
-
-const styles = StyleSheet.create({
-  txt:{
-    padding: 12,
-    textAlign: 'center',
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold"
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#f1f',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App(){
+  return (
+    <NavigationContainer>
+      <MyStack/>
+    </NavigationContainer>
+  )
+}
