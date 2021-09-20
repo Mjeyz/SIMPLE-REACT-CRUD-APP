@@ -1,18 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.txt}>Saaere gama paa lill champ!</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.txt}>The best thing about a boolean is even if you are wrong, you are only off by a bit.</Text>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   txt:{
+    padding: 12,
+    textAlign: 'center',
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold"
